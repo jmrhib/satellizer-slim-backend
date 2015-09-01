@@ -1,7 +1,7 @@
 
 Example php-backend for [Satellizer](https://github.com/sahat/satellizer) using [Slim Framework](http://www.slimframework.com/) 
 
-It is a work in progress, and currently onlysupports Twitter and Facebook.
+It is a work in progress, and currently only supports Twitter and Facebook.
 
 Installation
 ------------
