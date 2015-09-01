@@ -5,11 +5,11 @@ It is a work in progress, and currently onlysupports Twitter and Facebook.
 
 Installation
 ------------
-1) Import users.sql in a database.
-2) Open src/Config.php and edit settings for server, user, password, database.
-3) Copy all files **except users.sql** to server.
-4) Run `composer install` on the server you copied the files to.
-5) Edit .htaccess file to suit your needs. 
+1. Import users.sql in a database.
+2. Open src/Config.php and edit settings for server, user, password, database.
+3. Copy all files **except users.sql** to server.
+4. Run `composer install` on the server you copied the files to.
+5. Edit .htaccess file to suit your needs. 
 
 On installations on the root path, it should look something like this:
 
