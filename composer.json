@@ -1,0 +1,9 @@
+{
+    "require": {
+        "slim/slim": "2.*",
+        "firebase/php-jwt": "~1.0",
+        "guzzlehttp/guzzle": "4.2.1",
+        "guzzlehttp/oauth-subscriber": "0.1.2"
+    },
+    "minimum-stability": "stable"
+}
