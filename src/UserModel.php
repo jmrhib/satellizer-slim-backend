@@ -155,17 +155,7 @@ Class UserModel extends Model{
 
     public function getUserWithEmail($email){
         try {
-            $statement = $this->connection->prepare('SELECT 
-            id, 
-            email, 
-            displayName,
-            facebook,
-            foursquare,
-            github,
-            google,
-            linkedin,
-            twitter
-            FROM users WHERE email=:email');
+            $statement = $this->connection->prepare('SELECT * FROM users WHERE email=:email');
             $statement->bindParam(':email', $email);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_ASSOC);
