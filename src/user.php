@@ -91,6 +91,34 @@ $app->group('/auth', function () use ($app, $user_model, $config) {
             $app->stop();
         }
     });
+    
+    $app->get('/unlink/:provider', function($provider) use($app, $config, $user_model){
+        $response = $app->response();
+        $response->headers->set('Content-Type', 'application/json');
+        $user_id = findUserId($app->request->headers->get($config->getAuthHeader()), $config->getSecret('TOKEN_SECRET'));
+        if(!$user_id){
+            $response->setBody('{"message": "User not found", "success": "false"}');
+            $response->setStatus(401);
+            $app->stop();
+        }
+        
+        if(
+            $provider === 'facebook' || 
+            $provider === 'foursquare' || 
+            $provider === 'github' || 
+            $provider === 'google' ||
+            $provider === 'linkedin' ||
+            $provider === 'twitter'
+        ){
+            $user_model->unlinkUser($user_id, $provider);
+        }
+        else {
+            $response->setBody('{"message": "Invalid provider", "success": "false"}');
+            $response->setStatus(401);
+            $app->stop();
+        }
+        
+    });
 
     $app->post('/facebook', function() use($app, $config, $user_model){
 

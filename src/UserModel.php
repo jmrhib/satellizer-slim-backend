@@ -52,6 +52,19 @@ Class UserModel extends Model{
         }
         return $this->connection->lastInsertId();
     }
+    
+    public function unlinkUser($user_id, $provider){
+        try {
+            $statement = $this->connection->prepare('UPDATE users SET ' . $provider . '=:empty WHERE id=:id');
+            $statement->bindValue(':empty', '', PDO::PARAM_STR);
+            $statement->bindParam(':id', $user_id);
+            $statement->execute();
+        }
+        catch(PDOException $e) {
+            return false;
+        }
+        return true;
+    }
 
     public function updateDisplayName($user_id, $displayName){
         try {
